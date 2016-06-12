@@ -1,0 +1,114 @@
+
+<span *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</span>
+<span *ngIf="successMessage" class="alert alert-success">{{successMessage}}</span>
+
+    <form class="form-horizontal" [ngFormModel]="profileForm">
+
+        <div class="form-group">
+          <div class="controls">
+            <label for="inputMentorFName">First Name(s)</label>
+            <input id="inputMentorFName"
+                  ngControl="inputMentorFName"
+                  [(ngModel)]="mentor.firstNames"
+                  class="form-control" type="text" placeholder="First Name"
+                  required maxlength="30"/>
+            <control-errors control="inputMentorFName"
+              [errors]="{
+                'required': 'First name is required',
+                'maxlength': 'Mentor First name cannot exceed 30 characters in length.'
+              }"></control-errors>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="controls">
+            <label for="inputMentorLName">Last Name(s)</label>
+            <input id="inputMentorLName"
+                   ngControl="inputMentorLName"
+                   [(ngModel)]="mentor.lastNames"
+                   type="text" class="form-control" placeholder="Last Name"
+                   required maxlength="30"/>
+            <control-errors control="inputMentorLName"
+              [errors]="{
+                'required': 'Last name is required',
+                'maxlength': 'Mentor Last name cannot exceed 30 characters in length.'
+              }"></control-errors>
+          </div>
+        </div>
+
+        <div class="form-group" >
+          <div class="controls">
+            <label for="inputMentorPhone">SMA Phone</label>
+            <input id="inputMentorPhone"
+                  ngControl="inputMentorPhone"
+                  [(ngModel)]="mentor.smaPhone"
+                  type="text" class="form-control" placeholder="Phone while in SMA: ###-###-####"
+                  required maxlength="13" minlength="7"/>
+            <control-errors control="inputMentorPhone"
+              [errors]="{
+                'required': 'SMA Phone is required.',
+                'minlength': 'SMA Phone must be at least 7 characters in length.',
+                'maxlength': 'SMA Phone cannot exceed 13 characters in length.'
+              }"></control-errors>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="controls">
+            <label for="inputMonthsinSma">Months Expected to be in SMA the coming year (e.g., 'All' or 'Jan, Feb,...')</label>
+            <input id="inputMonthsinSma"
+                  ngControl="inputMonthsinSma"
+                  [(ngModel)]="mentor.monthsinSma"
+                  type="text" class="form-control" placeholder="Months in SMA"
+                  required />
+            <control-errors control="inputMonthsinSma"
+              [errors]="{
+                'required': 'Months in SMA is required.'
+              }"></control-errors>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="controls">
+
+          <label for="SpanishLevelSelector">Spanish Level:</label>
+          <select ngControl="SpanishLevelSelector" class="form-control"
+              [(ngModel)]="mentor.spanishSkillLevelId" >
+            <option *ngFor="let status of statuses" [value]="status.statusId">{{status.label}}</option>
+          </select>
+            <control-errors control="SpanishLevelSelector"
+              [errors]="{
+                'required': 'Spanish Skill Level is required'
+              }"></control-errors>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="controls">
+          <label for="EnglishLevelSelector">English Level:</label>
+          <select ngControl="EnglishLevelSelector" class="form-control"
+              [(ngModel)]="mentor.englishSkillLevelId" >
+            <option *ngFor="let status of statuses" [value]="status.statusId">{{status.label}}</option>
+          </select>
+            <control-errors control="EnglishLevelSelector"
+              [errors]="{
+                'required': 'English Skill Level is required'
+              }"></control-errors>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="controls">
+            <button class="btn btn-default"
+            (click)="saveProfile()"
+            [disabled]="!profileForm.valid">
+            Save
+            </button> <span class="red" [hidden]="profileForm.valid">All required fields must be filled in before saving.</span>
+
+          </div>
+        </div>
+</form>
+
+

@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-ng-app="@ViewBag.InitModule">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <!-- Change title, description and keywords -->
+  <title>@ViewBag.Title - JovenesA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <link href='http://fonts.googleapis.com/css?family=Dosis:200,400,600' rel='stylesheet' type='text/css'>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+  <link href="~/Content/css/ddlevelsmenu-base.css" rel="stylesheet" />
+  <link href="~/Content/css/ddlevelsmenu-topbar.css" rel="stylesheet" />
+  <link href="~/Content/css/style.css" rel="stylesheet" />
+  <link href="~/Content/css/blue.css" rel="stylesheet" />
+  <link href="~/Content/css/toastr.css" rel="stylesheet" />
+  <!-- inject:css -->
+  <link rel="stylesheet" href="~/Client/dist/dev/css/main.css?1458441350241">
+  <!-- endinject -->
+  <!-- Our Custom Styles -->
+  <link href="~/Content/css/Site.css" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="~/Content/Images/favicon/favicon.png">
+</head>
+
+<body>
+
+  <!-- Sliding share panel. Click "Share it" to see. -->
+  <!-- Header -->
+  <div class="fixedbar">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div class="logo">
+            <div class="pull-left">
+              <h3><a href="#"><img src="~/Content/Images/JovenesLogo.png" />&nbsp;JA Privada</a></h3>
+            </div>
+            <div class="pull-right">
+              <section id="login">
+                @Html.Partial("_LoginPartial")
+              </section>
+            </div>
+            <div class="navi">
+              <!-- Navigation Starts Here -->
+              <div class="pull-left">
+                <div id="ddtopmenubar" class="mattblackmenu">
+                  <!-- Main navigation -->
+                  <ul>
+                    <li>
+                      @Html.ActionLink(//"Home", "Index", "Home")
+                            linkText: "Home",
+                            actionName: "Index",
+                            controllerName: "Home"
+                            )
+                    </li>
+                    <li>
+                      @Html.ActionLink(//"Admins", "Admins", "Home")
+                            linkText: "Admins",
+                            actionName: "Admins",
+                            controllerName: "Home"
+                            )
+                    </li>
+                    <li>
+                      @Html.ActionLink(//"Mentors", "Mentors", "Home")</li>
+                              linkText: "Mentors",
+                              actionName: "Mentors",
+                              controllerName: "Home"//,
+                                                    //routeValues: new
+                                                    //{
+                                                    //  studentIndex = 0
+                                                    //},
+                                                    //htmlAttributes: null
+                              )
+                    </li>
+
+                    <li>
+                      @Html.ActionLink(//"Psychologists", "Psychologists", "Home")
+                              linkText: "Psychologists",
+                              actionName: "Psychologists",
+                              controllerName: "Home"
+                              )
+                    </li>
+                    <li>@Html.ActionLink("Volunteers", "Volunteers", "Home")</li>
+                    <li>
+                      @Html.ActionLink(//"Estudiantes", "Estudiantes", "Home")
+                              linkText: "Estudiantes",
+                              actionName: "Students",
+                              controllerName: "Home"
+                              )
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Navigation Ends Here -->
+            </div>
+          </div>
+          <div class="share">
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+
+  <div class="main">
+    <div class="container body-content">
+      <div class="row">
+        <div class="span12 hidden-desktop">
+          <div class="padd">
+            <div class="navis"></div>
+          </div>
+        </div>
+        @RenderBody()
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Foot -->
+  <!-- Three column footer -->
+  <!-- Footer -->
+  <footer>
+    <div class="containerx">
+      <div class="rowx">
+        <div class="span12x">
+          <!-- Copyright information -->
+          <div class="fpadd foot">Copyright &copy; 2016 - <a href="http://www.jovenesadelante.org">Click here</a> to return to the <a href="http://www.jovenesadelante.org">Jovenes Adelante</a> public website.</div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+  <script>
+    // Fixes undefined module function in SystemJS bundle
+    function module() { }
+  </script>
+
+  <!-- shims:js -->
+  <script src="~/Client/node_modules/systemjs/dist/system-polyfills.src.js?1463750143374"></script>
+  <script src="~/Client/node_modules/reflect-metadata/Reflect.js?1463750143375"></script>
+  <script src="~/Client/node_modules/es6-shim/es6-shim.js?1463750143376"></script>
+  <script src="~/Client/node_modules/systemjs/dist/system.src.js?1463750143377"></script>
+  <script src="~/Client/node_modules/rxjs/bundles/Rx.js?1463750143378"></script>
+  <script src="~/Client/node_modules/zone.js/dist/zone.js?1463750143379"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <!-- endinject -->
+
+  <script>
+  (function(global) {
+
+  var ngVer     = '@@2.0.0-rc.1'; // lock in the angular package version; do not let it float to current!
+  var routerVer = '@@3.0.0-alpha.3'; // lock router version
+
+  //map tells the System loader where to look for things
+  var  map = {
+  'app':                        'app',
+
+  '@@angular':                   'https://npmcdn.com/@@angular', // sufficient if we didn't pin the version
+  //'@@angular/router': 'https://npmcdn.com/@@angular/router' + routerVer,
+  '@@angular/router':            'https://rawgit.com/angular/vladivostok/master/build/src',
+  'angular2-in-memory-web-api': 'https://npmcdn.com/angular2-in-memory-web-api', // get latest
+  'rxjs':                       'https://npmcdn.com/rxjs@5.0.0-beta.6',
+  'ts':                         'https://npmcdn.com/plugin-typescript@4.0.10/lib/plugin.js',
+  'typescript':                 'https://npmcdn.com/typescript@1.9.0-dev.20160409/lib/typescript.js',
+  };
+
+  var paths = {
+    "app/*": "/Client/dist/dev/app/*",
+    "admins-app/*": "/Client/dist/dev/admins-app/*",
+    "mentors-app/*": "/Client/dist/dev/mentors-app/*",
+    "@@angular/*": "/Client/node_modules/@@angular/*",
+    "rxjs/*": "/Client/node_modules/rxjs/*",
+    "assets/*": "/Client/dist/dev/assets/*",
+    "assets/*": "/Client/dist/dev/assets/*",
+    "assets/dev/*": "/Client/dist/dev/assets/dev/*",
+    "*": "Client/node_modules/*",
+  };
+
+  //packages tells the System loader how to load when no filename and/or no extension
+  var packages = {
+    'app': { main: 'main.ts', defaultExtension: 'ts' },
+    'admins-app': { main: 'main.ts', defaultExtension: 'ts' },
+    'mentors-app': { main: 'main.ts', defaultExtension: 'ts' },
+    'volunteers-app': { main: 'main.ts', defaultExtension: 'ts' },
+  'rxjs':                       { defaultExtension: 'js' },
+  'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+  };
+
+  var ngPackageNames = [
+  'common',
+  'compiler',
+  'core',
+  'http',
+  'platform-browser',
+  'platform-browser-dynamic',
+  'router-deprecated',
+  'upgrade',
+  ];
+
+  // Add map entries for each angular package
+  // only because we're pinning the version with `ngVer`.
+  ngPackageNames.forEach(function(pkgName) {
+  map['@@angular/'+pkgName] = 'https://npmcdn.com/@@angular/' + pkgName + ngVer;
+  });
+
+  // Add package entries for angular packages
+  ngPackageNames.forEach(function(pkgName) {
+
+  // Bundled (~40 requests):
+  packages['@@angular/'+pkgName] = { main: pkgName + '.umd.js', defaultExtension: 'js' };
+
+  // Individual files (~300 requests):
+  //packages['@@angular/'+pkgName] = { main: 'index.js', defaultExtension: 'js' };
+  });
+
+  // No umd for router yet
+  packages['@@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
+
+  var config = {
+    meta: {
+      'typescript': {
+        "exports": "ts"
+      }
+    },
+    map: map,
+    packages: packages,
+    paths: paths
+  }
+
+  System.config(config);
+
+  })(this);
+</script>
+<!--
+  <script>
+    System.config({
+      "defaultJSExtensions": true,
+      map: {
+        "ng2-highcharts": "/Client/node_modules/ng2-highcharts"
+      },
+      "packageConfigPaths": [
+        "/Client/node_modules/*/package.json",
+        "/Client/node_modules/**/package.json",
+        "/Client/node_modules/@@angular/*/package.json"
+      ],
+      "paths": {
+        "app/*": "/Client/dist/dev/app/*",
+        "admins-app/*": "/Client/dist/dev/admins-app/*",
+        "mentors-app/*": "/Client/dist/dev/mentors-app/*",
+        "@@angular/*": "/Client/node_modules/@@angular/*",
+        "rxjs/*": "/Client/node_modules/rxjs/*",
+        "assets/*": "/Client/dist/dev/assets/*",
+        "assets/*": "/Client/dist/dev/assets/*",
+        "assets/dev/*": "/Client/dist/dev/assets/dev/*",
+        "*": "Client/node_modules/*",
+      },
+      "packages": {
+        "@@angular": { "defaultExtension": false },
+        "rxjs": { "defaultExtension": "js" }
+      }
+    })
+  </script>
+  -->
+  <!-- libs:js -->
+
+
+
+
+
+  @RenderSection("scripts", required: false)
+</body>
+</html>

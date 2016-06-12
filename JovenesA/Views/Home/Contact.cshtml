@@ -1,0 +1,84 @@
+﻿@{
+  ViewBag.Title = "Contact Us";
+}
+@section scripts
+{
+  <script src="~/Client/ThirdPartyJS/jquery.validate.min.js"></script>
+  <script src="~/Client/ThirdPartyJS/jquery.validate.unobtrusive.min.js"></script>
+}
+<div class="span12">
+  <div class="whity content">
+    <!-- Main Content Starts Here -->
+    <!-- Content should be encloased inside div with the class "posts" -->
+    <div class="posts">
+      <!-- Each entry should be enclosed inside div with the class "entry" -->
+      <div class="entry">
+        <div class="padd">
+          <!-- Contact Page title -->
+          <h2>Contact Us</h2>
+          <!-- Contact Page Para -->
+          <p>Fill out this form to request additional information via email.</p>
+        </div>
+
+        <div class="row">
+          <div class="span8">
+            <div class="padd">
+              <div class="co-form">
+                <form class="form-horizontal" method="post" action="~/Home/Contact">
+                  <fieldset>
+                    <div class="control-group">
+                      <label class="control-label" for="name">Name</label>
+                      <div class="controls">
+                        <input type="text" class="input-medium" id="name" name="name" data-val="true" data-val-required="*">
+                        <span class="field-validation-valid" data-valmsg-for="name" data-valmsg-replace="true"></span>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="email">Your Email</label>
+                      <div class="controls">
+                        <input type="text" class="input-medium" id="email" name="email" data-val="true" data-val-required="*" data-val-email="Not Valid">
+                        <span class="field-validation-valid" data-valmsg-for="email" data-valmsg-replace="true"></span>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="subject">Subject</label>
+                      <div class="controls">
+                        <input type="text" class="input-medium" id="subject" name="subject" data-val="true" data-val-required="*">
+                        <span class="field-validation-valid" data-valmsg-for="subject" data-valmsg-replace="true"></span>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="comment">Message</label>
+                      <div class="controls">
+                        <textarea class="input-medium" id="comment" rows="3" name="comment" data-val="true" data-val-required="*"></textarea>
+                        <span class="field-validation-valid" data-valmsg-for="comment" data-valmsg-replace="true"></span>
+                      </div>
+                    </div>
+                    <div class="form-actions">
+                      <button type="submit" class="btn">Send</button>
+                      @if (ViewBag.MailSent != null && ViewBag.MailSent)
+                      {
+                        <div>Mail Sent!</div> 
+                      }
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+            <div class="span4">
+                @Html.Partial("_AddressBlockPartial");
+            </div>
+        </div>
+          <div class="gmap">
+              <div class="padd">
+                  <!-- Goto Google maps and copy the embed code of your location. Replace the below embed code with your code. -->
+                  <iframe height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Salida+Real+a+Querétaro+No.+1,+San+Miguel+de+Allende,+Mexico&amp;aq=0&amp;oq=google+&amp;sll=20.9067257,-100.730645&amp;sspn=0.192085,0.308647&amp;ie=UTF8&amp;&amp;t=m&amp;ll=20.9067257,-100.730645&amp;spn=0.012545,0.036006&amp;z=14&amp;output=embed"></iframe>
+              </div>
+          </div>
+    </div>
+    <!-- Main Content Ends Here -->
+  </div>
+
+</div>
+</div>

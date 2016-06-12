@@ -1,0 +1,155 @@
+﻿@model JovenesA.Models.MentorsViewModel
+@{
+    ViewBag.Title = "Mentors";
+}
+@section scripts
+{
+
+  <script>
+    console.log('hi from mentors.cshtml');
+        System.import('mentors-app/main')
+          .catch(function (e) {
+            console.error(e,
+              'Report this error at https://github.com/mgechev/angular2-seed/issues');
+          });
+  </script>
+
+}
+
+
+<style>
+  li.active a.ng-binding {
+    color: #000 !important;
+    background-color: #8CBEB2 !important;
+    text-decoration: none;
+  }
+
+  li a.ng-binding {
+    color: #777777;
+    background-color: #F2EBBF;
+    text-decoration: none;
+  }
+
+  .tab-container {
+    border-style: solid;
+    border-color: #dcdcdc;
+    border-width: 0px 1px 1px 1px;
+    background-color: #8CBEB2;
+    padding: 15px;
+  }
+
+  .xtraSpace {
+    margin: 20px 20px;
+  }
+</style>
+
+<div class="span12">
+  <div class="whity content">
+    <!-- Main Content Starts Here -->
+    <!-- Mentors Page title -->
+    <h3>Mentors Page</h3>
+
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#/">Mentor Home</a>
+            <a class="navbar-brand" href="#/profile/@Model.mentorId" )">My Profile</a>
+            <a class="navbar-brand" href="#/monthly-reports/@Model.mentorId">Monthly Reports</a>
+          </div>
+          </div>
+      </nav>
+
+      <div class="container">
+
+        @{
+            if (Model.rpt_StudentMentors.Count() > 1)
+            {
+                @:Select current student from your assigned students below and then click Monthly Reports above:
+                @Html.ActionLink(//"Mentors", "Mentors", "Home")</li>
+                            linkText: "First Student",
+                            actionName: "Mentors",
+                            controllerName: "Home",
+                            routeValues: new
+                            {
+                              studentIndex = 0
+                            },
+                            htmlAttributes: null
+                            )
+                @:&nbsp;
+                @Html.ActionLink(//"Mentors", "Mentors", "Home")</li>
+                            linkText: "Second Student",
+                            actionName: "Mentors",
+                            controllerName: "Home",
+                            routeValues: new
+                            {
+                              studentIndex = 1
+                            },
+                            htmlAttributes: null
+                            )
+            }
+            else if (Model.rpt_StudentMentors.Count() == 1)
+            {
+                @:Your assigned student:
+
+            }
+            else
+            {
+                @:No currently active assigned students
+            }
+        }
+
+
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+
+              <th class="hidden"></th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Mentor Meeting</th>
+              <th>Mentor Report</th>
+              <th>Snapshot</th>
+              @*<th>Grade Rpt</th>
+          <th>GPA</th>*@
+              <th>University</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            @{ string[] x = { "frownSmiley", "neutralSmiley", "greenSmiley", "NA" }; }
+
+            @foreach (var student in Model.rpt_StudentMentors)
+            {
+
+                <tr @(student.StudentId == @Model.studentId ? "class=success" : String.Empty )>
+
+
+                  @{ string MntrMtg = "/Content/images/" + student.TimelyMentorMeetingStatus + ".jpg";}
+                  @{ string MntrRpt = "/Content/images/" + student.TimelyMentorReportStatus + ".jpg";}
+                  @{ string Rpt = "/Content/images/" + student.GradeRptStatus + ".jpg";}
+                  @{ string Avg = "/Content/images/" + student.GPAStatus + ".jpg";}
+                  @{ string SnpSht = "/Content/images/" + x[(int)student.StudentSnapshotStatus + 1] + ".jpg";}
+
+                  <td class="hidden">@student.StudentId</td>
+                  <td>@student.StudentFirstNames</td>
+                  <td>@student.StudentLastNames</td>
+                  <td>@student.StudentEmail</td>
+                  <td><img src='@MntrMtg' height="22" /></td>
+                  <td><img src='@MntrRpt' height="22" /></td>
+                  <td><img src='@SnpSht' height="22" /></td>
+                  @*<td><img src='@Rpt' height="22px" /></td>
+              <td><img src='@Avg' height="22px" /></td>*@
+                  <td>@student.UniversityName</td>
+                </tr>
+                      }
+          </tbody>
+        </table>
+
+        <sd-app>Loading...</sd-app>
+        <router-outlet></router-outlet>
+      </div>
+
+      <!-- Main Content Ends Here -->
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿@*@model IEnumerable<JovenesA.Data.Topic>*@
+@{
+  ViewBag.Title = "Message Board";
+  ViewBag.InitModule = "messageBoard";
+}
+@section Scripts {
+  <script src="~/Client/MyJS/messageboard.js"></script>
+}
+
+<div data-ng-view=""></div>

@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Volunteers";
+    ViewBag.InitModule = "volunteersApp";
+}
+@section scripts
+{
+
+
+<script>
+    console.log('hi from volunteers.cshtml');
+        System.import('main.volunteers')
+          .catch(function (e) {
+            console.error(e,
+              'Report this error at https://github.com/mgechev/angular2-seed/issues');
+          });
+</script>
+  
+  
+}
+
+
+<div class="span12">
+  <div class="whity content">
+    <sd-app>Loading...</sd-app>
+  </div>
+
+</div>

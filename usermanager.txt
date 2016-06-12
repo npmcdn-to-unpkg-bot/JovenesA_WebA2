@@ -1,0 +1,48 @@
+Advaita1!
+AAoftBNMGu/k5rJI1I8Oj8Q/JagBu9wSfzKaPg4GoklyQxnTaBYAesalMdlmTw7PbQ==
+
+
+Display the profile infromation on the page
+?When the User Logs in, you can display the profile information by doing the following
+?Get the current logged in UserId, so you can look the user up in ASP.NET Identity system
+?var currentUserId = User.Identity.GetUserId();
+?Instantiate the UserManager in ASP.Identity system so you can look up the user in the system
+?var manager = new UserManager<MyUser>(new UserStore<MyUser>(new MyDbContext()));
+?Get the User object
+?var currentUser = manager.FindById(User.Identity.GetUserId());
+?Get the profile information about the user
+?currentUser.BirthDate
+
+
+
+
+Code Snippet
+
+1.public class MyUser : IdentityUser
+2.    {
+3.        public virtual MyUserInfo MyUserInfo { get; set; }
+4.    }
+5. 
+6.    public class MyUserInfo{
+7.        public int Id { get; set; }
+8.        public string FirstName { get; set; }
+9.        public string LastName { get; set; }
+10.    }
+11.    public class MyDbContext : IdentityDbContext<MyUser>
+12.    {
+13.        public MyDbContext()
+14.            : base("DefaultConnection")
+15.        {
+16.        }
+17.        public System.Data.Entity.DbSet<MyUserInfo> MyUserInfo { get; set; }
+
+
+•When the User Logs in, you can display the profile information by doing the following
+•Get the current logged in UserId, so you can look the user up in ASP.NET Identity system
+?var currentUserId = User.Identity.GetUserId();
+•Instantiate the UserManager in ASP.Identity system so you can look up the user in the system
+?var manager = new UserManager<MyUser>(new UserStore<MyUser>(new MyDbContext()));
+•Get the User object
+?var currentUser = manager.FindById(User.Identity.GetUserId());
+•Get the profile information about the user
+?currentUser.MyUserInfo.FirstName

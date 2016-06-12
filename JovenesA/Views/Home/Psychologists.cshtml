@@ -1,0 +1,50 @@
+﻿@model JovenesA.Models.PsychologistsViewModel
+@{
+    ViewBag.Title = "Psychologists";
+}
+@section scripts
+{
+
+  <script src="~/Client/Psychologists/psychologistsApp.js"></script>
+  <!-- Services -->
+
+  <script src="~/Client/Psychologists/psychologistProfileEditCtrl.js"></script>
+  <script src="~/Client/Psychologists/psychologistHomeCtrl.js"></script>
+  <script src="~/Client/Psychologists/quarterlyAssessmentAddCtrl.js"></script>
+  <script src="~/Client/Psychologists/quarterlyAssessmentListCtrl.js"></script>
+  <script src="~/Client/Psychologists/psychologistListCtrl.js"></script>
+}
+
+<div class="span12">
+  <div class="whity content">
+    <!-- Main Content Starts Here -->
+    <!-- Psychologists Page title -->
+    <h3>Psychologists Page</h3>
+
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" ui-sref="psychologistHome">Psychologist Home</a>
+          <a class="navbar-brand" ui-sref="psychologistProfile({psychologistId: @Model.psychologistId})">My Profile</a>
+          <a class="navbar-brand" ui-sref="quarterlyAssessmentList({psychologistId: @Model.psychologistId, studentId: @Model.studentId})">Quarterly Assessments</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+
+      @*{
+
+          @Html.Label("Select Student:&nbsp; ")
+          @Html.DropDownListFor(m => m.SelectedStudentId,
+              new SelectList(Model.StudentList, "Key", "Value"),
+                  new { @onchange = "CallChangefunc(this.value)" })
+              
+      }*@
+
+    </div>
+    <div ui-view=""></div>
+
+    <!-- Main Content Ends Here -->
+  </div>
+</div>
+

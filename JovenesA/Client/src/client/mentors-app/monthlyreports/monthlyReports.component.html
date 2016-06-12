@@ -1,0 +1,70 @@
+<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size:large">
+    Monthly Mentor Reports
+  </div>
+  <div class="panel-body">
+    <div class="progress progress-striped active" data-ng-show="isBusy">
+      <div class="bar" style="width: 100%;"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2 col-md-offset-10">
+        <span class="btn btn-primary" ui-sref="mentorReportAdd({ mentorId: mentorId, studentId: studentId })" style="width:120px;margin-left:10px">
+            Add New Report
+      </span>
+      </div>
+    </div>
+
+    <div class="row" style="border-bottom: 3px solid #888">
+
+      <div class="col-md-2">
+        Report Dt /<br/> Contact Dt
+      </div>
+
+      <div class="col-md-2">
+        Student /<br/> Mentor
+      </div>
+
+      <div class="col-md-1">
+        Snapshot
+      </div>
+      <div class="col-md-7">
+        Follow-up Needed
+      </div>
+    </div>
+    <div class="row" style="border-bottom: 3px solid #ccc; margin-top: 5px;" *ngFor="let i of mentorReports">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-2">
+            {{ i.reportDateTime | truncate }} /<br/> {{ i.lastContactDate | truncate }}
+          </div>
+          <div class="col-md-2">
+            {{ i.studentName }} /<br/> {{ i.mentorName }}
+          </div>
+          <div class="col-md-1">
+            <img src="{{smileys[i.mentorReportSnapshot+1]}}" width="24px" />
+          </div>
+          <div class="col-md-7">
+            {{ i.followUpNeeded }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md2">
+            &nbsp;Recent Success:
+          </div>
+          <div class="col-md-10">
+            {{ i.recentSuccess }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md2">
+            &nbsp;Recent Setback:
+          </div>
+          <div class="col-md-10">
+            {{ i.recentSetback }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

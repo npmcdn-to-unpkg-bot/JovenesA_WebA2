@@ -1,0 +1,82 @@
+﻿@model JovenesA.Models.StudentsViewModel
+@{
+    ViewBag.Title = "Students";
+    ViewBag.InitModule = "studentsApp";
+}
+@section scripts
+{
+
+  <script src="~/Client/Students/studentsApp.js"></script>
+  <!-- Services -->
+
+  <script src="~/Client/Students/studentProfileEditCtrl.js"></script>
+  <script src="~/Client/Students/studentHomeCtrl.js"></script>
+}
+
+<div class="span12">
+  <div class="whity content">
+    <!-- Main Content Starts Here -->
+    <!-- Students Page title -->
+    <h3>Pagina de Estudiantes</h3>
+
+
+
+  @{
+
+      if (Model.student != null)
+      {
+
+          <nav class="navbar">
+            <div class="container">
+              <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="studentHome">Bienvenido</a>
+                <a class="navbar-brand" ui-sref="studentProfile({studentId: @Model.studentId})">Mi Perfil</a>
+                <a class="navbar-brand" ui-sref="expenditures({studentId: @Model.studentId})">Los Gastos</a>
+                <a class="navbar-brand" ui-sref="donorLetter({studentId: @Model.studentId})">Carta al Padrino</a>
+              </div>
+            </div>
+          </nav>
+          <div class="container">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+
+                  <th class="hidden"></th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                  <th>Cell Phone</th>
+                  <th>Grad Year</th>
+                  <th>Grade Rpt</th>
+                  <th>GPA</th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr class="success">
+                  @{ string Rpt = "/Content/images/" + "neutralSmiley" + ".jpg";}
+                  @{ string Avg = "/Content/images/" + "neutralSmiley" + ".jpg";}
+
+                  <td class="hidden">@Model.student.StudentId</td>
+                  <td>@Model.student.FirstNames</td>
+                  <td>@Model.student.LastNames</td>
+                  <td>@Model.student.Email</td>
+                  <td>@Model.student.CellPhone</td>
+                  <td>@Model.student.GradYear</td>
+                  <td><img src='@Rpt' height="22" /></td>
+                  <td><img src='@Avg' height="22" /></td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    }
+  }
+
+    <div ui-view=""></div>
+
+    <!-- Main Content Ends Here -->
+  </div>
+</div>
+
