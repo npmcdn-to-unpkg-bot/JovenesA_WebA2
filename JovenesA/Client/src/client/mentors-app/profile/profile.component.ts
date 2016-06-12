@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, RouteParams} from '@angular/router-deprecated';
 import {FormBuilder, Validators, ControlGroup, FORM_DIRECTIVES, FORM_PROVIDERS} from '@angular/common';
 import {MyLogger} from '../shared/services/my-logger';
 import {SqlResource} from '../shared/services/sql-resource';
@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   firstNames: string;
   lastNames: string;
   mentor: Mentor;
+  routeParams: RouteParams;
 
   constructor(
               public myLogger: MyLogger,
@@ -55,7 +56,7 @@ export class ProfileComponent implements OnInit {
   }
  ngOnInit() {
         this.myLogger.log('ngOnInit');
-        let mentorId: number  = 48; //Number(this.routeParams.get('mentorId'));
+        let mentorId: number  = Number(this.routeParams.get('mentorId'));
         this.myLogger.log('param as Number: ' + mentorId);
         this.sqlResource.getMentor(mentorId)
           .subscribe(

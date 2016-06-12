@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
-//import {RouterParams} from '@angular/router';
+import {RouteParams} from '@angular/router-deprecated';
 import {SqlResource} from '../shared/services/sql-resource';
 import {TruncatePipe} from '../shared/components/truncate-pipe';
 import {MyLogger} from '../shared/services/my-logger';
@@ -24,6 +24,8 @@ export class MonthlyReportsComponent implements OnInit {
   mentorId: number;
   mentorReports: Array<RptMentorReport>;
   smileys: Array<string>;
+  routeParams: RouteParams;
+  
   constructor(
               //public routeParams: RouteParams,
               public myLogger: MyLogger,
@@ -39,8 +41,8 @@ export class MonthlyReportsComponent implements OnInit {
 
  ngOnInit() {
         this.myLogger.log('monthlyReports ngOnInit');
-        //this.myLogger.log('param as Number: ' + Number(this.routeParams.get('mentorId')));
-        this.mentorId = 58; //Number(this.routeParams.get('mentorId'));
+        this.myLogger.log('param as Number: ' + Number(this.routeParams.get('mentorId')));
+        this.mentorId = 58; Number(this.routeParams.get('mentorId'));
         this.studentId = 185; //Number(this.routeParams.get('studentId'));
 this.myLogger.log('mentorId ' + this.mentorId);
 this.myLogger.log('studentId ' + this.studentId);

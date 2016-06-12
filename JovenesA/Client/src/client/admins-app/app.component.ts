@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Routes, ROUTER_DIRECTIVES} from '@angular/router';
+import {RouteConfig, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import { NameListService, NavbarComponent} from './shared/index';
 import { HomeComponent } from './+home/index';
 import { ProfileComponent } from './profile/index';
@@ -11,15 +11,15 @@ import { ProfileComponent } from './profile/index';
   templateUrl: './app.component.html',
   directives: [ROUTER_DIRECTIVES, NavbarComponent],
 })
-@Routes([
+@RouteConfig([
   {
     path: '/',
-    //name: 'Home',
+    name: 'Home',
     component: HomeComponent
   },
   {
     path: '/profile/:adminId',
-    //name: 'Profile',
+    name: 'Profile',
     component: ProfileComponent
   }
 ])

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES, Routes} from '@angular/router';
+import {ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
 
 import { NavbarComponent } from './shared/navbar/index';
 import { NameListService } from './shared/name-list/index';
@@ -12,7 +12,7 @@ import { HomeComponent } from './+home/index';
   templateUrl: './app.component.html',
   directives: [ROUTER_DIRECTIVES, NavbarComponent]
 })
-@Routes([
+@RouteConfig([
   {
     path: '/',
     //name: 'Home',

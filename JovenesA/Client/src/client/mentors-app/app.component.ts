@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES, Routes} from '@angular/router';
+import {ROUTER_DIRECTIVES, RouteConfig} from '@angular/router-deprecated';
 import {MyLogger} from './shared/services/my-logger';
 
 
@@ -16,21 +16,21 @@ import { NameListService, NavbarComponent } from './shared/index';
   templateUrl: './app.component.html',
   directives: [ROUTER_DIRECTIVES, NavbarComponent]
 })
-@Routes([
+@RouteConfig([
   {
     path: '/',
-    //name: 'Home',
+    name: 'Home',
     component: HomeComponent
   }
   ,
   {
     path: '/profile/:mentorId',
-    //name: 'Profile',
+    name: 'Profile',
     component: ProfileComponent
   },
   {
     path: '/monthly-reports/:mentorId',
-    //name: 'MonthlyReports',
+    name: 'MonthlyReports',
     component: MonthlyReportsComponent
   }
 ])

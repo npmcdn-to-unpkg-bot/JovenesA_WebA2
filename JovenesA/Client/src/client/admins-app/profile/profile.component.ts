@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { Router, RouteSegment} from '@angular/router';
+import {Router} from '@angular/router-deprecated';
 import {FormBuilder, Validators, ControlGroup, FORM_DIRECTIVES, FORM_PROVIDERS} from '@angular/common';
 import {MyLogger} from '../shared/services/my-logger';
 import {SqlResource} from '../shared/services/sql-resource';
@@ -26,9 +26,6 @@ export class ProfileComponent implements OnInit {
   firstNames: string;
   lastNames: string;
   admin: Admin;
-  //
-  //private curSegment: RouteSegment;
-  //
 
   constructor(
               public myLogger: MyLogger,
