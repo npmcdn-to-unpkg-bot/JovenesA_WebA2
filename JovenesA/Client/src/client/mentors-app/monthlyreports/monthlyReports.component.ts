@@ -24,10 +24,9 @@ export class MonthlyReportsComponent implements OnInit {
   mentorId: number;
   mentorReports: Array<RptMentorReport>;
   smileys: Array<string>;
-  routeParams: RouteParams;
-  
+
   constructor(
-              //public routeParams: RouteParams,
+              public routeParams: RouteParams,
               public myLogger: MyLogger,
               public sqlResource: SqlResource) {
 

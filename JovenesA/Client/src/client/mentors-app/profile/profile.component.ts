@@ -25,11 +25,10 @@ export class ProfileComponent implements OnInit {
   firstNames: string;
   lastNames: string;
   mentor: Mentor;
-  routeParams: RouteParams;
 
   constructor(
               public myLogger: MyLogger,
-            //  public routeParams: RouteParams,
+              public routeParams: RouteParams,
               public sqlResource: SqlResource,
               public fb: FormBuilder) {
     myLogger.log('hi from profile.component constructor');

@@ -2,7 +2,7 @@ import {Injectable, Provider, provide} from '@angular/core';
 import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {Mentor} from '../mentor';
-import {RptMentorReport} from '../mentor-report';
+import {RptMentorReport, MentorReport} from '../mentor-report';
 
 @Injectable()
 export class SqlResource {
@@ -22,6 +22,15 @@ export class SqlResource {
       //     () => console.log('done')
       //);
   }
+
+  public addMentorReport(mentorId: Number, studentId: Number): Observable<MentorReport> {
+    console.log('getMentor: ' + mentorId);
+    let url: string = 'http://localhost:57378/api/v1/mentorReports/' + mentorId + '/' + studentId;
+    return this.http.get(url)
+      .map((response:Response) => response.json())
+      .catch(this.handleError);
+  }
+
 
   public getMentorReports(mentorId: Number, studentId: Number): Observable<RptMentorReport[]> {
     let url: string = 'http://localhost:57378//api/v1/mentorReports/' + mentorId + '/' + studentId;

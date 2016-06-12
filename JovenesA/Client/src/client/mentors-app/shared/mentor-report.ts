@@ -16,3 +16,20 @@
 
       }
     }
+
+ export class MentorReport {
+      constructor(
+        public MentorReportId?: number,
+        public mentorId?: number,
+        public studentId?: number,
+        public reportDateTime?: Date,
+        public lastContactDate?: Date,
+        public mentorReportSnapshot?: number,
+        public reasonForDelay?: string,
+        public followUpNeeded?: string,
+        public recentSuccess?: string,
+        public recentSetback?: string
+      ) {
+
+      }
+    }

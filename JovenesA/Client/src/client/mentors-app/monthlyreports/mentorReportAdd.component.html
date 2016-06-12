@@ -1,0 +1,95 @@
+﻿<div class="panel panel-primary">
+  <div class="panel-heading" style="font-size:large">
+    New Monthly Report
+  </div>
+  <div class="panel-body">
+    <form name="mentorReportForm" class="form-horizontal" novalidate>
+      <fieldset>
+        <legend> Add New Monthly Report</legend>
+        <div class="container"></div>
+        <div class="form-group" ng-class="{ 'has-error': mentorReportForm.inputLastContactDate.$touched && mentorReportForm.inputLastContactDate.$invalid }">
+          <div class="controls">
+            <label for="dateLastContact">APPROXIMATE Date You Last Communicated with Student (&gt;&gt;Need not be exact&lt;&lt;)</label>
+            <input class="form-control" type="text" id="inputLastContactDate" readonly="readonly" name="inputLastContactDate" placeholder="click to pick date from calendar" ng-model="vm.mentorReport.lastContactDate"
+            datepicker-popup="dd-MMM-yyyy" is-open="vm.lastContactDatePickerIsOpen" ng-click="vm.lastContactDatePickerOpen()"
+            ng-required="true" close-text="Close" style="background:white" width="85" />
+            <span class="help-block" style="color:maroon" ng-messages="mentorReportForm.inputLastContactDate.$error" ng-if="mentorReportForm.inputLastContactDate.$touched && mentorReportForm.inputLastContactDate.$invalid">
+          <span ng-message="required">Required.</span>
+            <span ng-message="date">Select date from calendar for proper format</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="controls">
+            <label>Mentor Report Snapshot: (<span>How are things going overall with the student?</span>)</label>
+            <input type="radio" id="snapshot" name="snapshot"  ng-model="vm.mentorReport.mentorReportSnapshot" value="1" ng-required="true"   >
+                <img src="/Content/images/greenSmiley.jpg" width="24px" />
+           </label>
+            <input type="radio" id="snapshot" name="snapshot"  ng-model="vm.mentorReport.mentorReportSnapshot" ng-value="0" ng-required="true"  >
+                <img src="/Content/images/neutralSmiley.jpg" width="24px" />
+           </label>&nbsp;&nbsp;
+           <label>
+            <label>
+              <input type="radio" id="snapshot" name="snapshot" ng-model="vm.mentorReport.mentorReportSnapshot" value="-1" ng-required="true"   >
+                <img src="/Content/images/frownSmiley.jpg" width="24px" />
+              </label>&nbsp;&nbsp;
+           <label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="controls">
+            <label for="inputFollowUp">Please describe any situation Requiring Follow Up (or 'N/A')</label>
+            <textarea class="form-control" id="inputFollowUp" name="inputFollowUp" type="text" placeholder="Follow up Needed (or 'N/A')"
+            ng-model="vm.mentorReport.followUpNeeded" ng-minlength="2" ng-maxlength="2000" required></textarea>
+            <span class="help-block" style="color:maroon" ng-messages="mentorReportForm.inputFollowUp.$error" ng-if="mentorReportForm.inputFollowUp.$touched && mentorReportForm.inputFollowUp.$invalid">
+          <span ng-message="required">An entry is required, even if it is just 'N/A'.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="controls">
+            <label for="inputSuccess">Please describe any recent sucesses</label>
+            <textarea class="form-control" id="inputSuccess" name="inputSuccess" type="text" placeholder="Recent Successes (or 'N/A')"
+            ng-model="vm.mentorReport.recentSuccess" required ng-minlength="2" ng-maxlength="2000"></textarea>
+            <span class="help-block" style="color:maroon" ng-messages="mentorReportForm.inputSuccess.$error" ng-if="mentorReportForm.inputSuccess.$touched && mentorReportForm.inputSuccess.$invalid">
+          <span ng-message="required">An entry is required, even if it is just 'N/A'.</span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <label for="inputSetback">Please describe any recent challenges</label>
+            <textarea class="form-control" id="inputSetback" name="inputSetback" type="text" placeholder="Recent Setbacks (or 'N/A')"
+            ng-model="vm.mentorReport.recentSetback" required ng-minlength="2" ng-maxlength="2000"></textarea>
+            <span class="help-block" style="color:maroon" ng-messages="mentorReportForm.inputSetback.$error" ng-if="mentorReportForm.inputSetback.$touched && mentorReportForm.inputSetback.$invalid">
+          <span ng-message="required">An entry is required, even if it is just 'N/A'.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-4 col-md-offset-2">
+            <span>
+          <button class="btn btn-primary"
+                  style="width:80px;margin-right:10px"
+                  ng-click="vm.submit(mentorReportForm.$valid)">
+                  <!--ng-disabled="mentorReportForm.$invalid">-->
+            Save
+          </button>
+        </span>
+            <span>
+          <button class="btn btn-default"
+                  style="width:70px"
+                  ng-click="vm.cancel()">
+            Cancel
+          </button>
+        </span>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
