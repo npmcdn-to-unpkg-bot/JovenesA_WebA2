@@ -3,10 +3,12 @@
     Monthly Mentor Reports
   </div>
   <div class="panel-body">
-    <div class="progress progress-striped active" data-ng-show="isBusy">
-      <div class="bar" style="width: 100%;"></div>
-    </div>
+    <loading-indicator></loading-indicator>
 
+  <div class="progress" [style.visibility]= "isBusy ? 'visible' : 'hidden'">
+    <div class="progress-bar progress-bar-striped active" role="progressbar"  style="width:100%">
+    </div>
+  </div>
     <div class="row">
       <div class="col-md-2 col-md-offset-10">
         <span class="btn btn-primary" ui-sref="mentorReportAdd({ mentorId: mentorId, studentId: studentId })" style="width:120px;margin-left:10px">
