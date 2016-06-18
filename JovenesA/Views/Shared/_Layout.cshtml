@@ -169,20 +169,26 @@
 
   '@@angular':                   'https://npmcdn.com/@@angular', // sufficient if we didn't pin the version
   //'@@angular/router': 'https://npmcdn.com/@@angular/router' + routerVer,
-  '@@angular/router':            'https://rawgit.com/angular/vladivostok/master/build/src',
+  //'@@angular/router':            'https://rawgit.com/angular/vladivostok/master/build/src',
   'angular2-in-memory-web-api': 'https://npmcdn.com/angular2-in-memory-web-api', // get latest
-  'rxjs':                       'https://npmcdn.com/rxjs@5.0.0-beta.6',
-  'ts':                         'https://npmcdn.com/plugin-typescript@4.0.10/lib/plugin.js',
-  'typescript':                 'https://npmcdn.com/typescript@1.9.0-dev.20160409/lib/typescript.js',
+  'rxjs':                       'https://npmcdn.com/rxjs@5.0.0-beta.6'
   };
 
   var paths = {
     "app/*": "/Client/dist/dev/app/*",
     "admins-app/*": "/Client/dist/dev/admins-app/*",
     "mentors-app/*": "/Client/dist/dev/mentors-app/*",
-    "@@angular/*": "/Client/node_modules/@@angular/*",
+
+    "@@angular/core": "/Client/node_modules/@@angular/core/bundles/core.umd.js",
+    "@@angular/common": "/Client/node_modules/@@angular/common/bundles/common.umd.js",
+    "@@angular/compiler": "/Client/node_modules/@@angular/compiler/bundles/compiler.umd.js",
+    "@@angular/forms": "/Client/node_modules/@@angular/forms/bundles/forms.umd.js",
+    "@@angular/http": "/Client/node_modules/@@angular/http/bundles/http.umd.js",
+    "@@angular/router": "/Client/node_modules/@@angular/router/index.js",
+    "@@angular/platform-browser": "/Client/node_modules/@@angular/platform-browser/bundles/platform-browser.umd.js",
+    "@@angular/platform-browser-dynamic": "/Client/node_modules/@@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+
     "rxjs/*": "/Client/node_modules/rxjs/*",
-    "assets/*": "/Client/dist/dev/assets/*",
     "assets/*": "/Client/dist/dev/assets/*",
     "assets/dev/*": "/Client/dist/dev/assets/dev/*",
     "*": "Client/node_modules/*",
@@ -190,12 +196,41 @@
 
   //packages tells the System loader how to load when no filename and/or no extension
   var packages = {
-    'app': { main: 'main.ts', defaultExtension: 'ts' },
-    'admins-app': { main: 'main.ts', defaultExtension: 'ts' },
-    'mentors-app': { main: 'main.ts', defaultExtension: 'ts' },
-    'volunteers-app': { main: 'main.ts', defaultExtension: 'ts' },
-  'rxjs':                       { defaultExtension: 'js' },
-  'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+    'app': { main: 'main.js', defaultExtension: 'js' },
+    'admins-app': { main: 'main.js', defaultExtension: 'js' },
+    'mentors-app': { main: 'main.js', defaultExtension: 'js' },
+    'volunteers-app': { main: 'main.js', defaultExtension: 'js' },
+    '@@angular/core': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@@angular/compiler': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@@angular/common': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@@angular/http': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@@angular/platform-browser': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@@angular/platform-browser-dynamic': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    '@@angular/router': {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    'rxjs': {
+      defaultExtension: false
+    }
   };
 
   var ngPackageNames = [
@@ -229,6 +264,7 @@
   packages['@@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
 
   var config = {
+    "defaultJSExtensions": true,
     meta: {
       'typescript': {
         "exports": "ts"
